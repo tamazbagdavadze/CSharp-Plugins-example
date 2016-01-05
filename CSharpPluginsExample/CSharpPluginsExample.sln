@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PluginInterface", "PluginIn
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin1", "Plugin1\Plugin1.csproj", "{55F84C3F-6618-4BB6-870B-6641FB1BE075}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin2", "Plugin2\Plugin2.csproj", "{651AA7B3-4FC2-4694-975C-771D55C33E31}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{55F84C3F-6618-4BB6-870B-6641FB1BE075}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{55F84C3F-6618-4BB6-870B-6641FB1BE075}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{55F84C3F-6618-4BB6-870B-6641FB1BE075}.Release|Any CPU.Build.0 = Release|Any CPU
+		{651AA7B3-4FC2-4694-975C-771D55C33E31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{651AA7B3-4FC2-4694-975C-771D55C33E31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{651AA7B3-4FC2-4694-975C-771D55C33E31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{651AA7B3-4FC2-4694-975C-771D55C33E31}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

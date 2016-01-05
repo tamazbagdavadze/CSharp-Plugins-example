@@ -4,17 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{002D0BD7-14A4-4034-AB76-7DEAFC32F42E}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{651AA7B3-4FC2-4694-975C-771D55C33E31}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CSharpPluginsExample</RootNamespace>
-    <AssemblyName>CSharpPluginsExample</AssemblyName>
+    <RootNamespace>Plugin2</RootNamespace>
+    <AssemblyName>Plugin2</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -34,7 +31,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -44,27 +40,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Plugin2.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-    <None Include="bin\Debug\CSharpPluginsExample.exe.config" />
-    <None Include="bin\Debug\CSharpPluginsExample.vshost.exe.config" />
-    <None Include="bin\Debug\CSharpPluginsExample.vshost.exe.manifest" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="bin\Debug\CSharpPluginsExample.exe" />
-    <Content Include="bin\Debug\CSharpPluginsExample.pdb" />
-    <Content Include="bin\Debug\CSharpPluginsExample.vshost.exe" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="bin\Debug\plugins\" />
-    <Folder Include="bin\Release\" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\PluginInterface\PluginInterface.csproj">
-      <Project>{3f2d6475-fecc-4dbc-811c-a86fa66aea2c}</Project>
+      <Project>{3F2D6475-FECC-4DBC-811C-A86FA66AEA2C}</Project>
       <Name>PluginInterface</Name>
     </ProjectReference>
   </ItemGroup>
