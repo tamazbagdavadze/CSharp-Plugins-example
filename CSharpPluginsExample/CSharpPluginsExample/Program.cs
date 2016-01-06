@@ -5,8 +5,6 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.Remoting;
-using System.Security;
-using System.Security.Permissions;
 using PluginInterface;
 // ReSharper disable InvertIf
 // ReSharper disable LoopCanBeConvertedToQuery
@@ -22,17 +20,7 @@ namespace CSharpPluginsExample
             var pluginsFolder = Directory.GetCurrentDirectory() + ConfigurationManager.AppSettings.Get("pluginsFolder");
             var assemblyPaths = Directory.GetFiles(pluginsFolder, "*.dll").ToList();
 
-            var setup = new AppDomainSetup
-            {
-                ApplicationBase = AppDomain.CurrentDomain.SetupInformation.ApplicationBase
-            };
-
-            var permissionSet = new PermissionSet(PermissionState.None);
-            permissionSet.AddPermission(new SecurityPermission(SecurityPermissionFlag.Execution));
-            permissionSet.AddPermission(new FileIOPermission(FileIOPermissionAccess.AllAccess, pluginsFolder));
-            permissionSet.AddPermission(new ReflectionPermission(ReflectionPermissionFlag.MemberAccess));
-
-            var appdomain = AppDomain.CreateDomain("plugins container", null, setup, permissionSet);
+            var appdomain = AppDomain.CreateDomain("plugins container");
             var myPlugins = new List<IMyPlugin>();
 
             foreach (var assembly in assemblyPaths.Select(Assembly.ReflectionOnlyLoadFrom))
@@ -41,15 +29,15 @@ namespace CSharpPluginsExample
                 {
                     if (IsValidType(type))
                     {
-                        var p = appdomain.CreateInstanceFromAndUnwrap(assembly.Location, type.FullName) as IMyPlugin;
-                        myPlugins.Add(p);
+                        var newPlugin = appdomain.CreateInstanceFromAndUnwrap(assembly.Location, type.FullName) as IMyPlugin;
+                        myPlugins.Add(newPlugin);
                     }
                 }
             }
 
-            myPlugins.ForEach(i =>
-                Console.WriteLine("is transparent proxy : " + RemotingServices.IsTransparentProxy(i) + ", assembly name : " +
-                                  i.Execute(() => Assembly.GetCallingAssembly().GetName().Name)));
+            myPlugins.ForEach(plugin =>
+                Console.WriteLine("is transparent proxy : " + RemotingServices.IsTransparentProxy(plugin) + ", assembly name : " +
+                                  plugin.Execute(() => Assembly.GetCallingAssembly().GetName().Name)));
 
             AppDomain.Unload(appdomain);
 
